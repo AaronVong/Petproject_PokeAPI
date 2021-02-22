@@ -5,7 +5,13 @@ export default function Header(props) {
     <header className="header">
       <h1 className="header__content">Pokédex Using PokeAPI.co</h1>
       <p>
-        Code <a href="https://github.com/AaronVong/Petproject_PokeAPI">here</a>
+        Code{" "}
+        <a
+          href="https://github.com/AaronVong/Petproject_PokeAPI"
+          target="_blank"
+        >
+          here
+        </a>
       </p>
     </header>
   );
