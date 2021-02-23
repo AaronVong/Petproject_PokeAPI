@@ -15,7 +15,7 @@ export default class Stat extends React.Component {
     );
     return (
       <div className={`info ${mainType}`}>
-        <div className={`info__header ${mainType}`}>
+        <div className="info__header">
           <img
             src={
               this.props.pokemon.sprites.other["official-artwork"][

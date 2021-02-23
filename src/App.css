@@ -305,6 +305,7 @@ html,
   align-items: center;
   cursor: pointer;
   font-size: 15px;
+  position: relative;
 }
 
 .pokecards__card img {
@@ -317,10 +318,12 @@ html,
 .card__header {
   padding: 0.5em;
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
+  z-index: 2;
 }
 
 .card__body {
@@ -341,6 +344,30 @@ img {
   border-radius: 20px;
 }
 
+.card__tools {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 120px;
+  display: none;
+}
+
+.card__tools .tools__compare {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card__tools .tools__compare .btn--cmp {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  margin: 5px 0;
+}
+
+.pokecards__card:hover .card__tools {
+  display: block;
+}
 /* .right .info {
   background-color: rgba(255, 255, 255, 0.5);
 } */
@@ -387,4 +414,25 @@ img {
   height: 100%;
   transition: width 200ms linear;
   background-color: #0984e3;
+}
+
+.right .right__cmp {
+  display: flex;
+  position: relative;
+  border-top: 1px solid #333;
+}
+.right .right__cmp .info {
+  border-right: 1px solid black;
+}
+
+.right__cmp .clean {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 7;
+}
+.right__cmp .clean button {
+  background-color: white;
+  cursor: pointer;
+  margin: 0;
 }

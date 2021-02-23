@@ -7,11 +7,30 @@ export default class Pokedex extends React.Component {
     super(props);
     this.state = {
       clickedPokemon: null,
+      cmpPokemons: [],
     };
   }
 
   onClickPokemon = (pokemon = null) => {
     this.setState({ clickedPokemon: pokemon });
+  };
+
+  onClickComparePokemon = (pokemon) => {
+    let cmpPokemons = this.state.cmpPokemons;
+    if (cmpPokemons.length <= 1) {
+      cmpPokemons.push(pokemon);
+      this.setState({ cmpPokemons });
+    } else {
+      cmpPokemons.pop();
+      cmpPokemons.push(pokemon);
+      this.setState({ cmpPokemons });
+    }
+    if (this.state.clickedPokemon) {
+      window.scroll({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
   render() {
     return (
@@ -21,6 +40,7 @@ export default class Pokedex extends React.Component {
           <PokeCards
             pokedex={this.props.pokedex}
             onClick={this.onClickPokemon}
+            cmpPokemons={this.onClickComparePokemon}
           />
           <PokedexNav
             nextClick={this.props.nextPage}
@@ -35,6 +55,7 @@ export default class Pokedex extends React.Component {
               <PokeCards
                 pokedex={this.props.foundPokemon}
                 onClick={this.onClickPokemon}
+                cmpPokemons={this.onClickComparePokemon}
               />
             </React.Fragment>
           )}
@@ -42,6 +63,22 @@ export default class Pokedex extends React.Component {
         <div className="right">
           {this.state.clickedPokemon && (
             <Stat pokemon={this.state.clickedPokemon} />
+          )}
+          {this.state.cmpPokemons.length > 0 && (
+            <div className="right__cmp">
+              <div className="clean">
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={() => this.setState({ cmpPokemons: [] })}
+                >
+                  Clean compare
+                </button>
+              </div>
+              {this.state.cmpPokemons.map((pokemon, index) => {
+                return <Stat pokemon={pokemon} key={index} />;
+              })}
+            </div>
           )}
         </div>
       </div>

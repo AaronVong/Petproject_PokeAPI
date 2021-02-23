@@ -9,12 +9,7 @@ export default class PokeCard extends React.Component {
         : item.type.name + "/"
     );
     return (
-      <li
-        className={`pokecards__card ${mainType}`}
-        onClick={() => {
-          this.props.onClick(this.props.data);
-        }}
-      >
+      <li className={`pokecards__card ${mainType}`}>
         <div className="card__header">
           <img
             src={
@@ -26,6 +21,30 @@ export default class PokeCard extends React.Component {
           <span className="id"># {this.props.data.id}</span>
           <span className="name">{this.props.data.name}</span>
           <span className="types">Types: {types}</span>
+        </div>
+        <div className="card__tools">
+          <div className="tools__compare">
+            <button
+              type="button"
+              className="btn btn--cmp"
+              onClick={() => {
+                this.props.cmpPokemons(this.props.data);
+              }}
+            >
+              Compare
+            </button>
+          </div>
+          <div className="tools__compare">
+            <button
+              type="button"
+              className="btn btn--cmp"
+              onClick={() => {
+                this.props.onClick(this.props.data);
+              }}
+            >
+              View
+            </button>
+          </div>
         </div>
       </li>
     );

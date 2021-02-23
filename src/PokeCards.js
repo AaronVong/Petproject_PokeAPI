@@ -5,11 +5,13 @@ export default class PokeCards extends React.Component {
     return (
       <ul className="pokecards">
         {this.props.pokedex.map((pokemon, index) => {
+          if (!pokemon) return;
           return (
             <PokeCard
               key={pokemon.id}
               data={pokemon}
               onClick={this.props.onClick}
+              cmpPokemons={this.props.cmpPokemons}
             />
           );
         })}

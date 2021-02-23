@@ -40,7 +40,7 @@ export default class PokedexNav extends React.Component {
               maxLength={15}
             ></input>
             {this.props.isSearching && (
-              <div class="lds-facebook">
+              <div className="lds-facebook">
                 <div>L</div>
                 <div>o</div>
                 <div>a</div>
